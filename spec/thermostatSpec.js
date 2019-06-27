@@ -5,12 +5,11 @@ describe('Thermostat', function(){
 
   beforeEach(function(){
     thermostat = new Thermostat();
-});
+  });
 
   it('starts at 20 degrees', function() {
      expect(thermostat.getCurrentTemperature()).toEqual(20);
   });
-
 
   it('increase temp by 1 degrees', function() {
     thermostat.up();
@@ -20,7 +19,7 @@ describe('Thermostat', function(){
   it('decrease temp by 1 degree', function() {
     thermostat.down();
     expect(thermostat.getCurrentTemperature()).toEqual(19);
-  })
+  });
 
   it('has minimum of 10 degrees', function() {
     for (var i = 0; i < 11; i++) {
@@ -33,15 +32,9 @@ describe('Thermostat', function(){
     expect(thermostat.isPowerSavingModeOn()).toBe(true);
   });
 
-  it('can power saving mode off', function(){
+  it('can power saving mode off', function() {
     thermostat.switchPowerSavingModeOff();
     expect(thermostat.isPowerSavingModeOn()).toBe(false);
   });
-  it('can swith psm back on', function(){
-    thermostat.switchPowerSavingModeOff();
-    expect(thermostat.isPowerSavingModeOn()).toBe(false);
-    thermostat.switchPowerSavingModeOn();
-    expect(thermostat.isPowerSavingModeOn()).toBe(true);
-  }
-  });
+
 });
