@@ -4,7 +4,8 @@ function Thermostat() {
   // if you would like to target without using this just make it a variable
   // var temp = this.temperature
   this.MINIMUM_TEMPERATURE = 10;
-  this.MAXIMUM_TEMPERATURE = 25;
+  this.MAX_LIMIT_PSM_ON = 25;
+  this.MAX_LIMIT_PSM_OFF = 32;
   this.temperature = 20;
   this.powerSavingMode = true;
 };
@@ -18,8 +19,12 @@ Thermostat.prototype.isMinimumTemperature = function() {
 };
 
 Thermostat.prototype.isMaximumTemperature = function() {
-   return this.temperature === this.MAXIMUM_TEMPERATURE;
-};
+  if (this.powerSavingMode === false) {
+    return this.temperature === this.MAX_LIMIT_PSM_OFF;
+  }
+  return
+    this.temperature === this.MAX_LIMIT_PSM_ON;
+  };
 
 Thermostat.prototype.up = function() {
     if (this.isMaximumTemperature()) {
@@ -41,4 +46,8 @@ Thermostat.prototype.isPowerSavingModeOn = function() {
 
 Thermostat.prototype.switchPowerSavingModeOff = function() {
     this.powerSavingMode = false;
+};
+
+Thermostat.prototype.switchPowerSavingModeOn = function() {
+    this.powerSavingMode = true;
 };
