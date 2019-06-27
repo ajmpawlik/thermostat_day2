@@ -50,11 +50,12 @@ describe('Thermostat', function(){
       }
       expect(thermostat.getCurrentTemperature()).toEqual(32);
     });
-    it ('reset to default temperature', function() {
+
+    it('can be reset to the default temperature', function() {
       for (var i = 0; i < 6; i++) {
         thermostat.up();
       }
-      thermostat.resetTemperature = function() {
-        expect(thermostat.getCurrentTemperature()).toEqual(20);
+      thermostat.resetTemperature();
+      expect(thermostat.getCurrentTemperature()).toEqual(20);
     });
 });
